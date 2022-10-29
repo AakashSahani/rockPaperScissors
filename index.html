@@ -2,10 +2,36 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="A Rock Paper Scissor Game" />
+		<link rel="stylesheet" href="./styles/mobile.css" />
+		<link rel="stylesheet" href="./styles/main.css" />
 		<title>Rock Paper Scissor</title>
 	</head>
-	<body></body>
+	<body>
+		<header>
+			<h1>
+				ROCK <br />
+				PAPER <br />
+				SCISSORS
+			</h1>
+			<div class="score">
+				<span>SCORE</span>
+				<p class="tracker">0</p>
+			</div>
+		</header>
+		<main>
+			<div class="paper">
+				<img src="./images/icon-paper.svg" alt="Paper" />
+			</div>
+			<div class="scissor">
+				<img src="./images/icon-scissors.svg" alt="Paper" />
+			</div>
+			<div class="rock">
+				<img src="./images/icon-rock.svg" alt="Paper" />
+			</div>
+		</main>
+		<button>Rules</button>
+		<script src="./script/app.js"></script>
+	</body>
 </html>
