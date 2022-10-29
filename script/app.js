@@ -3,6 +3,9 @@ const paper = document.querySelector('.paper');
 const rock = document.querySelector('.rock');
 const scissor = document.querySelector('.scissor');
 
+//Score
+const score = document.querySelector('.tracker');
+
 //Winning Combination
 const winningCombo = [
 	['paper', 'rock'],
@@ -41,6 +44,7 @@ function whoWon(player, house) {
 		console.log('You lost');
 	} else {
 		console.log('You won');
+		score.innerHTML = parseInt(score.innerHTML) + 1;
 	}
 }
 
