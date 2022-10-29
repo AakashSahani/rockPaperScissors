@@ -2,4 +2,18 @@
 	body {
 		background-color: black;
 	}
+	header {
+		width: 500px;
+	}
+
+	.rules {
+		top: 50%;
+		left: 50%;
+		width: 400px;
+		height: 400px;
+		margin-left: -200px;
+		margin-top: -200px;
+		border-radius: 1rem;
+		box-sizing: 0 0 10px 0 grey;
+	}
 }
