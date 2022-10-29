@@ -37,14 +37,10 @@ const housePick = document.querySelector('.house');
 const result = document.querySelector('.result');
 const resultText = document.querySelector('.result-text');
 const playAgain = document.querySelector('.play');
-let resultDisplayed = false;
-
-if (resultDisplayed === true) {
-	console.log(resultDisplayed);
-}
 
 //Event Listeners
 paper.addEventListener('click', () => {
+	disableBtn();
 	player = 'paper';
 	hideChoice(paperImg);
 	house = houseChoice('rock', 'scissor');
@@ -52,18 +48,19 @@ paper.addEventListener('click', () => {
 });
 
 rock.addEventListener('click', () => {
+	disableBtn();
 	player = 'rock';
 	hideChoice(rockImg);
 	house = houseChoice('paper', 'scissor');
 	whoWon(player, house);
-	resultDisplayed = true;
 });
 
 scissor.addEventListener('click', () => {
+	disableBtn();
 	player = 'scissor';
 	hideChoice(scissorImg);
 	house = houseChoice('paper', 'rock');
-	setInterval(whoWon(player, house), 2000);
+	setTimeout(whoWon(player, house), 2000);
 });
 
 close.addEventListener('click', () => {
@@ -75,7 +72,7 @@ open.addEventListener('click', () => {
 });
 
 playAgain.addEventListener('click', () => {
-	console.log('play again');
+	enableBtn();
 	paper.innerHTML = paperImg;
 	scissor.innerHTML = scissorImg;
 	rock.innerHTML = rockImg;
@@ -95,8 +92,11 @@ function whoWon(player, house) {
 	) {
 		result.style.display = 'flex';
 		resultText.innerHTML = 'YOU LOST';
-		score.innerHTML = parseInt(score.innerHTML) - 1;
-		console.log('You lost');
+		if (score.innerHTML === '0') {
+			score.innerHTML = 0;
+		} else {
+			score.innerHTML = parseInt(score.innerHTML) - 1;
+		}
 	} else {
 		result.style.display = 'flex';
 		resultText.innerHTML = 'YOU WON';
@@ -109,10 +109,8 @@ function houseChoice(choice1, choice2) {
 	let random = Math.floor(Math.random() * 2);
 	let choice;
 	if (random === 1) {
-		console.log('House chose ' + choice1);
 		choice = choice1;
 	} else {
-		console.log('House chose ' + choice2);
 		choice = choice2;
 	}
 	switch (choice) {
@@ -140,4 +138,17 @@ function hideChoice(imgPath) {
 	rock.style.display = 'none';
 	playerPick.style.display = 'block';
 	housePick.style.display = 'block';
+}
+
+//Disable Button
+function disableBtn() {
+	paper.style.cssText = 'pointer-events: none;';
+	rock.style.cssText = 'pointer-events: none;';
+	scissor.style.cssText = 'pointer-events: none;';
+}
+
+function enableBtn() {
+	paper.style.cssText = 'pointer-events: all;';
+	rock.style.cssText = 'pointer-events: all;';
+	scissor.style.cssText = 'pointer-events: all;';
 }
