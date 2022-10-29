@@ -74,7 +74,18 @@ open.addEventListener('click', () => {
 	rules.style.display = 'flex';
 });
 
-playAgain.addEventListener('click', () => {});
+playAgain.addEventListener('click', () => {
+	console.log('play again');
+	paper.innerHTML = paperImg;
+	scissor.innerHTML = scissorImg;
+	rock.innerHTML = rockImg;
+	result.style.display = 'none';
+	scissor.classList = 'scissor';
+	triangle.style.display = 'block';
+	rock.style.display = '';
+	playerPick.style.display = 'none';
+	housePick.style.display = 'none';
+});
 
 //Filters winningCombo
 function whoWon(player, house) {
@@ -84,7 +95,7 @@ function whoWon(player, house) {
 	) {
 		result.style.display = 'flex';
 		resultText.innerHTML = 'YOU LOST';
-		score.innerHTML = parseInt(score.innerHTML) + 1;
+		score.innerHTML = parseInt(score.innerHTML) - 1;
 		console.log('You lost');
 	} else {
 		result.style.display = 'flex';
