@@ -21,16 +21,37 @@
 			</div>
 		</header>
 		<main>
+			<img
+				src="./images/bg-triangle.svg"
+				class="triangle"
+				alt="Triangle Shaped Background"
+			/>
 			<div class="paper">
 				<img src="./images/icon-paper.svg" alt="Paper" />
 			</div>
+			<p class="pick">YOU PICKED</p>
 			<div class="scissor">
-				<img src="./images/icon-scissors.svg" alt="Paper" />
+				<img src="./images/icon-scissors.svg" alt="Scissor" />
 			</div>
+			<p class="house">HOUSE PICKED</p>
 			<div class="rock">
-				<img src="./images/icon-rock.svg" alt="Paper" />
+				<img src="./images/icon-rock.svg" alt="Rock" />
 			</div>
 		</main>
+		<section class="result">
+			<h2 class="result-text">YOU LOSE</h2>
+			<button type="submit" class="play">PLAY AGAIN</button>
+		</section>
+		<section class="rules">
+			<h3>RULES</h3>
+			<img
+				src="./images/image-rules.svg"
+				alt="Rules: Paper beats Rock, Rock beats Scissor and Scissor beats Paper"
+			/>
+			<button type="button" aria-label="Close Rules" id="close">
+				<img src="./images/icon-close.svg" alt="Close" />
+			</button>
+		</section>
 		<button class="btn-rules">RULES</button>
 		<script src="./script/app.js"></script>
 	</body>

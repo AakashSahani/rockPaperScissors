@@ -3,11 +3,11 @@
 :root {
 	/* Primary */
 
-	--ScissorsGradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%);
-	--PaperGradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%);
-	--RockGradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%);
-	--LizardGradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%);
-	--Cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%);
+	--ScissorsGradient: hsl(39, 89%, 49%) hsl(40, 84%, 53%);
+	--PaperGradient: hsl(230, 89%, 62%) hsl(230, 89%, 65%);
+	--RockGradient: hsl(349, 71%, 52%) hsl(349, 70%, 56%);
+	--LizardGradient: hsl(261, 73%, 60%) hsl(261, 72%, 63%);
+	--Cyan: hsl(189, 59%, 53%) hsl(189, 58%, 57%);
 
 	/* Neutral */
 
@@ -17,7 +17,7 @@
 
 	/* Background */
 
-	--RadialGradient: hsl(214, 47%, 23%) to hsl(237, 49%, 15%);
+	--RadialGradient: hsl(214, 47%, 23%) hsl(237, 49%, 15%);
 }
 
 * {
@@ -27,9 +27,10 @@
 }
 
 body {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	align-items: center;
 	background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
 	color: white;
@@ -45,7 +46,6 @@ header {
 	align-items: center;
 	padding: 0 1rem;
 	width: 90%;
-	margin: 2rem;
 	height: fit-content;
 	border: 4px solid var(--HeaderOutline);
 	border-radius: 0.5rem;
@@ -74,30 +74,53 @@ h1 {
 }
 
 main {
+	position: relative;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	justify-content: space-between;
+	background: transparent;
+	justify-content: center;
 	align-items: center;
-	margin: 0 auto;
 	width: 300px;
 	height: 300px;
-	/* border: 1px solid white; */
 }
 
-main > * {
+main > img {
+	z-index: -1;
+	position: absolute;
+	top: 2rem;
+	left: 0;
+	width: 100%;
+}
+
+main > div {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	background-color: white;
-	border: 10px solid white;
+	background: white;
 	border-radius: 50%;
-	width: 100px;
-	height: 100px;
+	border: 10px solid;
+	width: 125px;
+	height: 125px;
+}
+
+main .pick {
+	display: none;
+	position: absolute;
+	left: 1.25rem;
+	top: 75%;
+}
+
+main .house {
+	display: none;
+	position: absolute;
+	right: 1.25rem;
+	top: 75%;
 }
 
 .paper {
 	border-color: plum;
+	/* border-color: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%)); */
 }
 
 .scissor {
@@ -105,13 +128,77 @@ main > * {
 	grid-column: 3/3;
 }
 
+.blank {
+	background-color: var(--DarkText);
+	border: none !important;
+}
+
 .rock {
 	border-color: lightcoral;
+	margin-top: 5rem;
 	grid-column: 2/3;
 }
 
+.result {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.result h2 {
+	font-size: 4rem;
+}
+
+.result button {
+	width: 100%;
+	height: 4rem;
+	margin-top: 1rem;
+	border-radius: 0.75rem;
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: var(--DarkText);
+}
+
+.rules {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	min-height: 100vh;
+	min-width: 100vw;
+	display: none;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	border: 1px solid white;
+	background-color: white;
+}
+
+.rules h3 {
+	font-size: 2.5rem;
+	font-weight: 500;
+	color: var(--DarkText);
+}
+
+.rules button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
+	border: none;
+}
+
+.rules button:hover {
+	cursor: pointer;
+}
+
+.rules button img {
+	width: 2rem;
+	height: auto;
+}
+
 .btn-rules {
-	border: 1px solid var(--HeaderOutline);
+	border: 4px solid var(--HeaderOutline);
 	background-color: transparent;
 	color: white;
 	width: 150px;
@@ -119,7 +206,7 @@ main > * {
 	font-weight: 500;
 	font-size: 1rem;
 	border-radius: 0.5rem;
-	margin: 2rem auto;
+	margin: 2.5rem auto;
 }
 
 .btn-rules:hover {
