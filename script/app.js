@@ -22,7 +22,7 @@ const winningCombo = [
 const triangle = document.querySelector('.triangle');
 
 //Player and house variables
-let player, house;
+let player, house, playerColor;
 
 //Img path
 const paperImg = '<img src="./images/icon-paper.svg" alt="Paper" />';
@@ -41,26 +41,29 @@ const playAgain = document.querySelector('.play');
 //Event Listeners
 paper.addEventListener('click', () => {
 	disableBtn();
+	playerColor = ' paper-color';
 	player = 'paper';
-	hideChoice(paperImg);
+	hideChoice(paperImg, playerColor);
 	house = houseChoice('rock', 'scissor');
 	whoWon(player, house);
 });
 
 rock.addEventListener('click', () => {
 	disableBtn();
+	playerColor = ' rock-color';
 	player = 'rock';
-	hideChoice(rockImg);
+	hideChoice(rockImg, playerColor);
 	house = houseChoice('paper', 'scissor');
 	whoWon(player, house);
 });
 
 scissor.addEventListener('click', () => {
 	disableBtn();
+	playerColor = ' scissor-color';
 	player = 'scissor';
-	hideChoice(scissorImg);
+	hideChoice(scissorImg, playerColor);
 	house = houseChoice('paper', 'rock');
-	setTimeout(whoWon(player, house), 2000);
+	whoWon(player, house);
 });
 
 close.addEventListener('click', () => {
@@ -82,6 +85,7 @@ playAgain.addEventListener('click', () => {
 	rock.style.display = '';
 	playerPick.style.display = 'none';
 	housePick.style.display = 'none';
+	paper.classList = 'paper';
 });
 
 //Filters winningCombo
@@ -107,21 +111,19 @@ function whoWon(player, house) {
 //Returns a random choice for House
 function houseChoice(choice1, choice2) {
 	let random = Math.floor(Math.random() * 2);
-	let choice;
-	if (random === 1) {
-		choice = choice1;
-	} else {
-		choice = choice2;
-	}
+	let choice = random === 1 ? choice1 : choice2;
 	switch (choice) {
 		case 'paper':
 			scissor.innerHTML = paperImg;
+			scissor.classList += ' paper-color';
 			break;
 		case 'scissor':
 			scissor.innerHTML = scissorImg;
+			scissor.classList += ' scissor-color';
 			break;
 		case 'rock':
 			scissor.innerHTML = rockImg;
+			scissor.classList += ' rock-color';
 			break;
 		default:
 			console.log('invalid');
@@ -130,8 +132,9 @@ function houseChoice(choice1, choice2) {
 }
 
 //Hide Other Choices
-function hideChoice(imgPath) {
+function hideChoice(imgPath, playerColor) {
 	paper.innerHTML = imgPath;
+	paper.classList += playerColor;
 	scissor.classList = 'scissor blank';
 	scissor.classList = 'scissor';
 	triangle.style.display = 'none';

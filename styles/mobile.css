@@ -122,7 +122,14 @@ main .house {
 
 .paper {
 	border-color: plum;
-	/* border-color: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%)); */
+}
+
+.paper-color {
+	border-color: plum !important;
+}
+
+.scissor-color {
+	border-color: yellow !important;
 }
 
 .scissor {
@@ -135,6 +142,9 @@ main .house {
 	border: none !important;
 }
 
+.rock-color {
+	border-color: lightcoral !important;
+}
 .rock {
 	border-color: lightcoral;
 	margin-top: 5rem;
